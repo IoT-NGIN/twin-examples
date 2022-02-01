@@ -1,0 +1,69 @@
+# Digital twin document of a traffic camera for use in IoT-NGIN project
+# Contents are is partially mockup!
+# This document loosely follows the Digital Twin document standard draft: https://github.com/AaltoIIC/dt-document
+# Compatible with Twinbase server software: https://github.com/twinbase/twinbase
+
+---
+privacy: public
+dt-id: https://dtid.org/ceb56f00-f3f4-4102-bef6-34ff6b089e6a
+hosting-iri: https://IoT-NGIN.github.io/twinbase/ceb56f00-f3f4-4102-bef6-34ff6b089e6a
+name: Traffic camera 1
+description: Traffic camera located in Jätkäsaari.
+baseurl: https://IoT-NGIN.github.io/twinbase
+edit: https://github.com/IoT-NGIN/twinbase/edit/main/docs/ceb56f00-f3f4-4102-bef6-34ff6b089e6a/index.yaml
+location:
+  city: Helsinki
+  street:
+  - Jätkäsaarenlaituri
+  - Tyynenmerenkatu
+  - Välimerenkatu
+  coordinates: 60.160104826222614, 24.921758333531383
+  links:
+  - Google Maps: https://www.google.com/maps/search/60.160104826222614,+24.921758333531383
+  - HERE WeGo: https://share.here.com/p/s-Yz1zdHJlZXQtc3F1YXJlO2xhdD02MC4xNjAxO2xvbj0yNC45MjE3NjtuPUolQzMlQTR0ayVDMyVBNHNhYXJlbmxhaXR1cmk7aD02ODBkNzY
+owner:
+  name: Conveqs Oy
+  website: https://www.conveqs.fi/
+contact:
+  device:
+    description: Contact information regarding the actual device. Find the appropriate contact person from the owner's website.
+    website: https://www.conveqs.fi/
+  twin:
+    description: Contact information regarding this document.
+    name: Juuso Autiosalo
+    email: juuso.autiosalo@aalto.fi
+manufacturer:
+  name: Axis
+  website: https://www.axis.com
+specs:
+  datasheet: https://www.axis.com/files/datasheet/ds_p1425le_1511947_en_1610.pdf
+  installation:
+      direction: North
+      image: https://mobilitylab.hel.fi/app/uploads/2020/01/smart-junction-yhdistelmakuva-2.png
+      example-image: https://www.aalto.fi/sites/g/files/flghsv161/files/styles/o_914w_ah_n_nu/public/2021-11/video.png?itok=U6SS16TY
+relations:
+- dt-id: http://dtid.org/d59a931b-0e7a-41a9-9c26-6dbc72513bd9
+  name: Traffic sensor station 1
+  relationType: parent
+features:
+- name: Camera data gathering
+  description: Links related to the data storages and APIs of the camera.
+  example-video: https://www.youtube.com/watch?v=3vh35Werv4vRf
+  addresses:
+    real-time:
+      address: https://example.com/iot-portal/traffic-camera-1
+      description: Real-time access to camera feed. Requires credentials.
+      documentation: http://dev.hel.fi/#api-documentation
+    configuration-view:
+      address: https://example.com/iot-portal/traffic-camera-1/settings
+      description: Configure settings here to modify data gathering parameteres.
+    data-storage:
+      address: https://example.com/iot-portal/traffic-camera-1/history
+      description: Browse historical data here.
+  requirement: Access to the IoT portal.
+- name: Links
+  description: Links to materials that provide additional information about the device
+  links:
+  - https://www.aalto.fi/fi/rakennetun-ympariston-laitos/smart-junction
+  - https://mobilitylab.hel.fi/projects/
+  - https://mobilitylab.hel.fi/materials/
