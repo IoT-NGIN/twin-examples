@@ -1,0 +1,114 @@
+"@context":
+  - https://www.w3.org/2019/wot/td/v1
+  - saref: https://w3id.org/saref#
+    opc: https://www.npmjs.com/package/@node-wot/binding-opcua
+id: did:example:powertrain01
+title: Powertrain 1
+created: 2021-11-05T19:10:23.824Z
+modified: 2021-11-08T09:12:43.124Z
+securityDefinitions:
+  nosec_sc:
+    scheme: nosec
+security: nosec_sc
+links:
+  - rel:
+      - controlledBy
+      - measuredBy
+      - consistsOf
+    href: did:example:drive01
+  - rel: measuredBy
+    href: did:example:smartsensor01
+  - rel: measuredBy
+    href: did:example:plc01
+  - rel: measuredBy
+    href: did:example:heatcam01
+  - rel: locatedIn
+    href: did:example:HighVoltageLaboratory
+  - rel: consistsOf
+    href: did:example:bearingM81DE
+  - rel: consistsOf
+    href: did:example:bearingM81NDE
+  - rel: consistsOf
+    href: did:example:motor81
+  - rel: consistsOf
+    href: did:example:motor82
+  - rel: consistsOf
+    href: did:example:motor83
+properties:
+  smartsensor_skin_temperature:
+    opc:DataType: Double
+    forms:
+      - href: opc.tcp://172.20.0.30:62546/OPCServer/ns=2;g=00007987-0003-d1dd-27fc-000000000004
+        op: readproperty
+  smartsensor_overall_vibration:
+    opc:DataType: Double
+    forms:
+      - href: opc.tcp://172.20.0.30:62546/OPCServer/ns=2;g=00007987-0003-41c1-2f14-0000000000044
+        op: readproperty
+actions:
+  plc_measurement:
+    input:
+      type: object
+      properties:
+        start_measurement:
+          type: boolean
+          const: true
+    output:
+      type: string
+    forms:
+      href: http://172.21.0.11:1880/plc/start_measurement
+      op: invokeaction
+      htv:methodName: POST
+      contentType: application/json
+events:
+  heatcam:
+    data:
+      description: Thermal data from heatcamera. json Array of integers. Can be
+        visualised in a 24x32 heatmap grid.
+      type: object
+      properties:
+        topic:
+          type: string
+        payload:
+          type: object
+          properties:
+            data:
+              type: array
+              items:
+                type: number
+              minItems: 768
+              maxItems: 768
+        qos:
+          type: number
+        retain:
+          type: boolean
+    forms:
+      - href: mqtt://172.21.0.11:1883/HeatCam
+        contentType: application/json
+        op: subscribeevent
+  drive_signals:
+    data:
+      type: object
+      properties:
+        payload:
+          type: array
+          items:
+            type: object
+            properties:
+              objectId:
+                type: string
+              model:
+                type: string
+              variable:
+                type: string
+              timestamp:
+                type: string
+                format: date-time
+              value:
+                type: number
+              unit:
+                type: string
+    forms:
+      - href: ws://172.21.0.11:1880/ws/drive_panel
+        contentType: application/json
+        op: observeproperty
