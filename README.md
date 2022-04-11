@@ -8,14 +8,12 @@ This repository contains early examples of digital twin documents to be used for
 ### Powertrain
 - Found in [powertrain](./powertrain/) folder.
 - Describes a powertrain system in a smart factory.
-- Written in WoT TD format.
-- Contact person Kimmo?
+- Written in [WoT TD](https://www.w3.org/TR/wot-thing-description/) format.
 
 ### Roadside camera
 - Found in [camera](./camera/) folder.
 - Describes a roadside camera located in a sensor unit in Jätkäsaari, Finland.
-- Written in Aalto DT document format.
-- Contact person Juuso?
+- Written in [Aalto DT document](https://github.com/AaltoIIC/dt-document) format.
 
 
 ## Formats
@@ -37,3 +35,7 @@ The formats used in the examples
 Other potentially useful formats
 - Asset Administration Shell (AAS)
 - Digital Twin Definition Language (DTDL)
+
+## Contact
+
+In case of questions, contact [Juuso Autiosalo](https://people.aalto.fi/juuso.autiosalo)
